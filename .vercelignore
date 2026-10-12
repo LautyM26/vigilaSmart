@@ -1,8 +1,0 @@
-# Solo se publica el sitio estático (HTML/CSS/JS + assets).
-# Fuera: el proyecto React en desarrollo y archivos internos del editor/IA.
-web
-.agents
-.claude
-Claude.md
-skills-lock.json
-README.md

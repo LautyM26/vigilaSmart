@@ -1,4 +1,4 @@
-/* Páginas de lectura (Cámaras, Instalación). Se cargan DESPUÉS de styles.css:
+/* Páginas de lectura (Cámaras, Instalación). Se carga DESPUÉS de styles.css:
    reusan la barra, el video y el velo, y cambian el lienzo fijo de la portada
    por una columna que scrollea. Las clases llevan prefijo doc- para no chocar
    con las de la portada (.title, .cta, .foot...). */
@@ -36,7 +36,7 @@
 /* Tablet y celular (arquitectura B): el body ya trae márgenes laterales */
 @media (max-width:1199px),(max-height:559px),(max-aspect-ratio:100/95){
   .doc .doc-page{width:min(100%,48rem)}
-  .navpanel .menu a[aria-current="page"]{background:rgba(255,255,255,.07)}
+  .doc .navpanel .menu a[aria-current="page"]{background:rgba(255,255,255,.07)}
 }
 
 /* ------------------------------------------------------------------ contenido */
