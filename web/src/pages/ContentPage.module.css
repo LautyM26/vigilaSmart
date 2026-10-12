@@ -1,0 +1,64 @@
+/* Estilos compartidos por las páginas de lectura (Cámaras, Instalación):
+   título, bajada y una lista de secciones separadas por filetes. */
+.page {
+  width: min(100% - 2 * var(--gutter), 48rem);
+  margin-inline: auto;
+  padding-block: clamp(3rem, 10vh, 6rem) clamp(1.5rem, 5vh, 3rem);
+  animation: lift .5s var(--ease-soft) backwards;
+}
+
+.title {
+  font-size: var(--fs-title);
+  line-height: 1.12;
+  letter-spacing: -.002em;
+  text-wrap: balance;
+  font-variation-settings: 'wght' 424;
+}
+
+.intro {
+  max-width: 40ch;
+  margin-top: 1rem;
+  font-size: var(--fs-sub);
+  line-height: 1.4;
+  text-wrap: pretty;
+  color: var(--sub);
+  font-variation-settings: 'wght' 446;
+}
+
+.sections {
+  margin-top: clamp(2.5rem, 7vh, 4rem);
+  border-top: 1px solid var(--hair-soft);
+}
+
+.section {
+  display: grid;
+  gap: .5rem;
+  padding-block: 1.5rem;
+  border-bottom: 1px solid var(--hair-soft);
+}
+
+.sectionTitle {
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  font-variation-settings: 'wght' 520;
+}
+
+.sectionText {
+  max-width: 60ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--sub);
+  font-variation-settings: 'wght' 400;
+}
+
+.cta { margin-top: clamp(2rem, 6vh, 3.5rem); }
+
+@media (min-width: 720px) {
+  .section {
+    grid-template-columns: 15rem 1fr;
+    gap: 2rem;
+    padding-block: 1.75rem;
+  }
+}
+
+@keyframes lift { from { opacity: 0; translate: 0 9px; } }

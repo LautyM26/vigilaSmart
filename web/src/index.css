@@ -1,0 +1,88 @@
+/* Estilos globales: fuente, tokens de diseño y reset.
+   Lo propio de cada componente vive en su *.module.css. */
+
+/* Sora variable: primero el archivo local, de respaldo la build variable de Google Fonts */
+@font-face {
+  font-family: 'Sora';
+  src: url('./assets/fonts/sora-variable.ttf') format('truetype-variations'),
+       url('https://fonts.gstatic.com/s/sora/v17/xMQbuFFYT72XzQUpDg.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: block;
+}
+
+/* ------------------------------------------------------------------ tokens */
+:root {
+  /* color */
+  --bg: #02060f;
+  --ink: #ffffff;
+  --sub: #a2a9b8;
+  --nav: #fbfdff;
+  --nav-dim: #e8ecf0;
+  --feat: #e2ebf5;
+  --foot: #f4f8fd;
+  --hair: rgba(196, 214, 232, .72);
+  --hair-soft: rgba(196, 214, 232, .18);
+  --chev: rgba(214, 232, 250, .90);
+  --focus: #9fe0ff;
+  --veil: 6, 10, 18;
+
+  /* tipografía fluida: valor en celular (360px) → valor en escritorio (1536px) */
+  --fs-word: clamp(1.1875rem, 1.103rem + .374vw, 1.4625rem);
+  --fs-nav: .84375rem;
+  --fs-title: clamp(2rem, 1.717rem + 1.259vw, 2.925rem);
+  --fs-sub: clamp(1rem, .912rem + .391vw, 1.2875rem);
+  --fs-cta: clamp(1.03125rem, .926rem + .468vw, 1.375rem);
+  --fs-feat: clamp(.8125rem, .782rem + .136vw, .9125rem);
+  --fs-foot: clamp(.84375rem, .79rem + .238vw, 1.01875rem);
+
+  /* layout (los breakpoints de los módulos son 600px, 900px y 1200px:
+     las variables CSS no funcionan dentro de @media) */
+  --container: 1114px;
+  --gutter: clamp(1.625rem, 4vw, 4rem);
+
+  /* vidrio y movimiento */
+  --blur: 26px;
+  --hairline: max(1px, .104vw);
+  --ease-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-soft: cubic-bezier(.25, .8, .35, 1);
+}
+
+/* -------------------------------------------------------------------- reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: var(--bg); }
+
+body {
+  min-height: 100dvh;
+  font-family: 'Sora', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: geometricPrecision;
+}
+
+h1, h2, h3 { font-size: inherit; font-weight: inherit; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+/* el anillo de foco sigue el radio propio de cada elemento (pills incluidas) */
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+::selection { background: rgba(159, 224, 255, .3); color: var(--ink); }
+
+/* texto que solo leen los lectores de pantalla (ej. "se abre en una pestaña nueva") */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}

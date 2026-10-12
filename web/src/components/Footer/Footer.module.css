@@ -1,0 +1,27 @@
+.foot {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 2 * var(--gutter), var(--container));
+  margin-inline: auto;
+  padding: clamp(1.5rem, 3vh, 2.5rem) 0 calc(env(safe-area-inset-bottom) + clamp(1.625rem, 4.5vw, 4.5rem));
+  text-align: center;
+  text-wrap: balance;
+  font-size: var(--fs-foot);
+  line-height: 1.55;
+  letter-spacing: -.016em;
+  color: var(--foot);
+  font-variation-settings: 'wght' 521;
+}
+
+.line { animation: lift .6s var(--ease-soft) 1.42s backwards; }
+.line + .line { animation-delay: 1.48s; }
+
+.phone {
+  text-decoration: underline 1px transparent;
+  text-underline-offset: .22em;
+  transition: text-decoration-color .15s ease;
+}
+
+.phone:hover { text-decoration-color: currentColor; }
+
+@keyframes lift { from { opacity: 0; translate: 0 9px; } }

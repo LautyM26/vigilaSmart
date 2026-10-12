@@ -1,0 +1,52 @@
+.video {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #03060c;
+  pointer-events: none;
+  user-select: none;
+  /* el clip trae fondo amarillo en el borde derecho: +8% lo deja fuera de
+     cuadro en pantallas 16:9 y más anchas */
+  scale: 1.08;
+}
+
+/* el brillo del iris cae justo detrás del texto: el velo se concentra en el centro */
+.veil {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(80% 62% at 50% 50%,
+      rgba(var(--veil), .52) 0%, rgba(var(--veil), .30) 55%, rgba(var(--veil), 0) 100%),
+    linear-gradient(180deg,
+      rgba(var(--veil), .22) 0%, rgba(var(--veil), 0) 16%,
+      rgba(var(--veil), 0) 72%, rgba(var(--veil), .30) 100%);
+}
+
+/* capa extra para páginas de lectura; aparece con un fundido al navegar */
+.veil::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(var(--veil), .62);
+  opacity: 0;
+  transition: opacity .6s var(--ease-soft);
+}
+
+.dimmed::after { opacity: 1; }
+
+/* en vertical el recorte pone las zonas claras del video detrás del texto: se re-apunta el velo */
+@media (max-width: 599px) {
+  .veil {
+    background:
+      radial-gradient(130% 44% at 50% 45%,
+        rgba(var(--veil), .50) 0%, rgba(var(--veil), .26) 55%, rgba(var(--veil), 0) 100%),
+      linear-gradient(180deg,
+        rgba(var(--veil), .34) 0%, rgba(var(--veil), 0) 20%,
+        rgba(var(--veil), 0) 60%, rgba(var(--veil), .36) 100%);
+  }
+}

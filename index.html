@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VigilaSmart — Instalación de Cámaras de Seguridad</title>
+<meta name="description" content="Instalación de cámaras de seguridad para hogares y negocios. Monitoreo 24/7, visión nocturna y acceso desde tu celular. Pedí tu presupuesto por WhatsApp.">
+<meta name="theme-color" content="#02060f">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Video de fondo: primer plano de un lente (Pexels, licencia libre). El poster es un cuadro del mismo clip. -->
+<video class="art" autoplay muted loop playsinline preload="auto" aria-hidden="true" poster="https://images.pexels.com/videos/5245970/pexels-photo-5245970.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920" src="https://videos.pexels.com/video-files/5245970/5245970-hd_1920_1080_25fps.mp4"></video>
+
+<div class="veil"></div>
+
+<header class="bar">
+  <a class="brand" href="index.html" aria-label="VigilaSmart, inicio">
+    <svg viewBox="0 0 23 17" aria-hidden="true">
+      <path d="M8.15 0.9 L4.55 0.9 L0.5 9.3 L4.1 9.3 Z"/>
+      <path d="M17.0 0 L13.4 0 L6.15 16.4 L9.75 16.4 Z"/>
+      <path d="M22.9 0 L19.3 0 L15.0 7.6 L18.6 7.6 Z"/>
+      <path d="M22.6 6.9 L19.0 6.9 L14.05 16.4 L17.65 16.4 Z"/>
+    </svg>
+    <span id="word">VIGILASMART</span>
+  </a>
+  <input class="navtoggle" type="checkbox" id="nav-open" aria-label="Menú">
+  <label class="scrim" for="nav-open" aria-hidden="true"></label>
+  <label class="burger" for="nav-open" aria-label="Menú">
+    <svg viewBox="0 0 22 14" aria-hidden="true">
+      <path class="b1" d="M1 1 H21"/>
+      <path class="b2" d="M1 7 H21"/>
+      <path class="b3" d="M1 13 H21"/>
+    </svg>
+  </label>
+  <div class="navpanel">
+    <nav class="menu">
+      <a href="index.html" aria-current="page"><span id="about">Inicio</span></a>
+      <a href="camaras.html"><span id="product">Cámaras</span></a>
+      <a href="instalacion.html"><span id="solutions">Instalación</span>
+        <svg class="caret" viewBox="0 0 9 6" aria-hidden="true"><path d="M0.7 1.1 L4.5 4.6 L8.3 1.1"/></svg></a>
+    </nav>
+    <a class="login" href="https://wa.me/5492613648258?text=Hola%2C%20vengo%20de%20la%20web%20VigilaSmart%20y%20me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para%20c%C3%A1maras%20de%20seguridad" target="_blank" rel="noopener"><span id="login">Contactar por WhatsApp</span>
+      <svg class="navarrow" viewBox="0 0 10 9" aria-hidden="true"><path d="M0 4.5 H9.1 M5.4 0.9 L9.2 4.5 L5.4 8.1"/></svg></a>
+    <a class="pill" href="tel:+5492613648258"><span id="contact">Llamar ahora</span></a>
+  </div>
+</header>
+
+<main class="hero">
+  <h1 class="title"><span id="h1a">Seguridad Inteligente</span>
+    <span id="h1b">en Alta Definición.</span></h1>
+  <p class="sub"><span id="sub1">Protegé tu hogar o negocio</span>
+    <span id="sub2">con monitoreo 24/7 directo en tu celular.</span></p>
+  <a class="cta" href="https://wa.me/5492613648258?text=Hola%2C%20vengo%20de%20la%20web%20VigilaSmart%20y%20me%20gustar%C3%ADa%20solicitar%20un%20presupuesto%20para%20c%C3%A1maras%20de%20seguridad" target="_blank" rel="noopener"><span id="cta">Solicitar Presupuesto</span>
+    <svg class="arrow" viewBox="0 0 16 11" aria-hidden="true"><path d="M0 5.5 H14.6 M10.3 1.2 L14.9 5.5 L10.3 9.8"/></svg></a>
+  <ul class="feats">
+    <li><svg class="chev" viewBox="0 0 11 20" aria-hidden="true"><path d="M1.15 1.15 L9.6 10 L1.15 18.85"/></svg><span id="f1">Monitoreo 24/7</span></li>
+    <li><svg class="chev" viewBox="0 0 11 20" aria-hidden="true"><path d="M1.15 1.15 L9.6 10 L1.15 18.85"/></svg><span id="f2">Almacenamiento Continuo</span></li>
+    <li><svg class="chev" viewBox="0 0 11 20" aria-hidden="true"><path d="M1.15 1.15 L9.6 10 L1.15 18.85"/></svg><span id="f3">Visión Nocturna</span></li>
+    <li><svg class="chev" viewBox="0 0 11 20" aria-hidden="true"><path d="M1.15 1.15 L9.6 10 L1.15 18.85"/></svg><span id="f4">Acceso desde el Celular</span></li>
+  </ul>
+  <span class="rule" aria-hidden="true"></span>
+</main>
+
+<footer class="foot" id="contacto">
+  <span id="foot1">VigilaSmart - Tu seguridad en buenas manos.</span>
+  <span id="foot2"><a href="tel:+5492613648258">261-364-8258</a> · © <time id="year">2026</time></span>
+</footer>
+
+<script src="site.js" defer></script>
+<script>
+/* La entrada es CSS puro; esto solo la retira cuando termina la última
+   animación, así un cambio de breakpoint (que muestra el burger) no la repite. */
+(function(){
+  var last=document.getElementById('foot2'),
+      root=document.documentElement,timer;
+  function done(){
+    clearTimeout(timer);
+    if(last)last.removeEventListener('animationend',done);
+    root.classList.add('is-entered');
+  }
+  if(last)last.addEventListener('animationend',done);
+  timer=setTimeout(done,4000);
+})();
+</script>
+</body>
+</html>

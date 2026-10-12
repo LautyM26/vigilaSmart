@@ -1,0 +1,146 @@
+/* Páginas de lectura (Cámaras, Instalación). Se cargan DESPUÉS de styles.css:
+   reusan la barra, el video y el velo, y cambian el lienzo fijo de la portada
+   por una columna que scrollea. Las clases llevan prefijo doc- para no chocar
+   con las de la portada (.title, .cta, .foot...). */
+
+:root{
+  --hair-soft:rgba(196,214,232,.18);
+  --gutter:clamp(1.625rem,4vw,4rem);
+  --fs-title:clamp(2rem,1.717rem + 1.259vw,2.925rem);
+  --fs-sub:clamp(1rem,.912rem + .391vw,1.2875rem);
+  --fs-cta:clamp(1.03125rem,.926rem + .468vw,1.375rem);
+  --fs-foot:clamp(.84375rem,.79rem + .238vw,1.01875rem);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-soft:cubic-bezier(.25,.8,.35,1);
+}
+
+/* ------------------------------------------------------------ lienzo con scroll */
+.doc,.doc body{height:auto;overflow:visible}
+.doc body{min-height:100vh;display:flex;flex-direction:column}
+@supports (height:100dvh){ .doc body{min-height:100dvh} }
+
+/* el texto corre sobre el video: el velo se oscurece parejo para que se lea */
+.doc .veil{background:
+  linear-gradient(180deg, rgba(var(--veil),.62) 0%, rgba(var(--veil),.80) 28%,
+                          rgba(var(--veil),.86) 100%)}
+
+.doc-main{position:relative;z-index:1;flex:1;order:2}
+
+/* Escritorio (arquitectura A): la barra deja de ser fija y se va con el scroll,
+   así el contenido nunca pasa por debajo de los textos del menú. */
+@media (min-width:1200px) and (min-height:560px) and (min-aspect-ratio:100/95){
+  .doc .bar{position:absolute}
+  .doc-main{padding-top:calc(var(--u)*120)}
+}
+
+/* Tablet y celular (arquitectura B): el body ya trae márgenes laterales */
+@media (max-width:1199px),(max-height:559px),(max-aspect-ratio:100/95){
+  .doc .doc-page{width:min(100%,48rem)}
+  .navpanel .menu a[aria-current="page"]{background:rgba(255,255,255,.07)}
+}
+
+/* ------------------------------------------------------------------ contenido */
+.doc-page{
+  width:min(100% - 2 * var(--gutter),48rem);
+  margin-inline:auto;
+  padding-block:clamp(3rem,10vh,6rem) clamp(1.5rem,5vh,3rem);
+}
+.doc-title{
+  font-size:var(--fs-title);line-height:1.12;letter-spacing:-.002em;
+  text-wrap:balance;font-variation-settings:'wght' 424;
+}
+.doc-intro{
+  max-width:40ch;margin-top:1rem;font-size:var(--fs-sub);line-height:1.4;
+  text-wrap:pretty;color:var(--sub);font-variation-settings:'wght' 446;
+}
+.doc-sections{margin-top:clamp(2.5rem,7vh,4rem);border-top:1px solid var(--hair-soft)}
+.doc-section{display:grid;gap:.5rem;padding-block:1.5rem;
+  border-bottom:1px solid var(--hair-soft)}
+.doc-section-title{font-size:1.0625rem;line-height:1.35;font-weight:inherit;
+  font-variation-settings:'wght' 520}
+.doc-section-text{max-width:60ch;font-size:1rem;line-height:1.6;color:var(--sub);
+  font-variation-settings:'wght' 400}
+@media (min-width:720px){
+  .doc-section{grid-template-columns:15rem 1fr;gap:2rem;padding-block:1.75rem}
+}
+
+/* bloque "Modelos" de Cámaras: hoy sin catálogo, invita a consultar */
+.doc-block{margin-top:clamp(2.5rem,7vh,4rem)}
+.doc-block-title{font-size:clamp(1.375rem,1.2rem + .6vw,1.75rem);line-height:1.2;
+  font-weight:inherit;font-variation-settings:'wght' 460}
+.doc-notice{display:grid;gap:.75rem;justify-items:start;margin-top:1.25rem;
+  padding-block:1.5rem;border-block:1px solid var(--hair-soft);
+  color:var(--sub);line-height:1.6}
+.doc-link{display:inline-flex;align-items:center;gap:.4rem;min-height:44px;
+  font-size:.9375rem;color:var(--ink);font-variation-settings:'wght' 500;
+  text-decoration:underline 1px var(--hair-soft);text-underline-offset:.3em;
+  transition:text-decoration-color .15s ease}
+.doc-link:hover{text-decoration-color:var(--hair)}
+.doc-link svg{width:.8rem;height:auto;fill:none;stroke:currentColor;
+  stroke-width:1.6;stroke-linecap:square;transition:translate .2s var(--ease-out)}
+.doc-link:hover svg{translate:3px 0}
+
+.doc-cta{margin-top:clamp(2rem,6vh,3.5rem)}
+
+/* --------------------------------------- botón de vidrio (mismo del CTA de la portada) */
+.btn{
+  position:relative;display:inline-flex;align-items:center;gap:.45em;
+  padding:clamp(.75rem,1rem - .3vw,.9375rem) clamp(1.75rem,1.56rem + .41vw,2.05rem)
+          clamp(.75rem,1rem - .3vw,.9375rem) clamp(1.75rem,1.6rem + .2vw,1.84rem);
+  border-radius:999px;font-size:var(--fs-cta);line-height:1;letter-spacing:-.014em;
+  white-space:nowrap;color:var(--ink);font-variation-settings:'wght' 497;
+  background-color:transparent;
+  background-image:
+    linear-gradient(180deg, rgba(6,12,22,0) 45%, rgba(6,12,22,.12) 78%, rgba(6,12,22,.28) 100%),
+    linear-gradient(90deg,
+      rgba(255,226,178,.17) 0%,  rgba(255,236,208,.07) 22%,
+      rgba(176,206,238,.03) 55%, rgba(150,196,244,.09) 100%),
+    linear-gradient(90deg,
+      rgba(255,255,255,.24) 0%,  rgba(255,255,255,.17) 12%,
+      rgba(255,255,255,.11) 26%, rgba(255,255,255,.07) 42%,
+      rgba(255,255,255,.05) 60%, rgba(255,255,255,.04) 80%,
+      rgba(255,255,255,.04) 100%);
+  -webkit-backdrop-filter:blur(26px) saturate(.45);
+  backdrop-filter:blur(26px) saturate(.45);
+  box-shadow:0 -2px 20px rgba(255,224,176,.20),0 0 34px rgba(168,204,252,.16),
+             inset 0 1px 0 0 rgba(255,251,242,.45);
+  transition:background-color .2s ease,translate .2s var(--ease-out);
+}
+/* filete en degradé: un pseudo-elemento enmascarado, no un border */
+.btn::before{
+  content:'';position:absolute;inset:0;padding:1px;border-radius:inherit;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg, rgba(255,252,246,.95) 0%, rgba(255,252,246,.20) 45%, rgba(255,252,246,0) 78%),
+    linear-gradient(90deg,
+      rgba(255,228,182,.95) 0%,  rgba(250,236,210,.70) 12%,
+      rgba(226,230,234,.03) 32%, rgba(214,226,240,.02) 62%,
+      rgba(200,228,250,.70) 90%, rgba(186,224,247,.95) 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+}
+.btn svg{width:.77em;height:auto;fill:none;stroke:currentColor;stroke-width:1.6;
+  stroke-linecap:square;stroke-linejoin:miter;transition:translate .2s var(--ease-out)}
+@media (hover:hover){
+  .btn:hover{background-color:rgba(255,255,255,.06);translate:0 -1px}
+  .btn:hover svg{translate:3px 0}
+}
+.btn:active{translate:0;scale:.985}
+
+/* -------------------------------------------------------------------- pie */
+.doc-foot{position:relative;z-index:1;order:3;text-align:center;color:var(--foot);
+  font-size:var(--fs-foot);line-height:1.65;padding-block:2rem 2.25rem;
+  font-variation-settings:'wght' 521;text-wrap:balance}
+.doc-foot span{display:block}
+
+/* texto solo para lectores de pantalla */
+.visually-hidden{position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* entrada suave del contenido; la barra no se re-anima al cambiar de página */
+@media (prefers-reduced-motion:no-preference){
+  @keyframes doc-lift{from{opacity:0;translate:0 9px}}
+  .doc-page{animation:doc-lift .5s var(--ease-soft) backwards}
+}

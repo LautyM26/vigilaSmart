@@ -1,0 +1,16 @@
+/* Columna de pantalla completa: la barra arriba, la página en el medio
+   (crece para empujar el footer al fondo) y el footer abajo. */
+.shell {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
